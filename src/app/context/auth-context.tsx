@@ -20,9 +20,9 @@ const DUMMY_USERS = [
   {
     email: "lennylewis6ay@gmail.com",
     password: "lenashalewis",
-    name: "Demo User",
+    name: "Lennox Lewis",
     role: "Admin",
-    corporation: "Resili AI Demo",
+    corporation: "Resili AI",
   },
 ];
 
