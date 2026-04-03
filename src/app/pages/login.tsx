@@ -8,6 +8,10 @@ import { Label } from "../components/ui/label";
 import { AlertCircle, ShieldCheck, LogIn, Mail, KeyRound, CloudRain, AlertTriangle, ClipboardCheck, FileText } from "lucide-react";
 
 export function Login() {
+  const demoCredentials = {
+    email: "lennylewis6ay@gmail.com",
+    password: "lenashalewis",
+  };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -58,6 +62,30 @@ export function Login() {
             </CardHeader>
 
             <CardContent>
+              <div className="mb-4 rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-3">
+                <p className="text-xs uppercase tracking-wider text-cyan-300">Demo Credentials</p>
+                <div className="mt-2 space-y-1 text-sm text-gray-200">
+                  <p>
+                    Email: <span className="font-medium text-cyan-200">{demoCredentials.email}</span>
+                  </p>
+                  <p>
+                    Password: <span className="font-medium text-cyan-200">{demoCredentials.password}</span>
+                  </p>
+                </div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="mt-3 w-full border-cyan-400/40 text-cyan-200 hover:bg-cyan-500/10"
+                  onClick={() => {
+                    setEmail(demoCredentials.email);
+                    setPassword(demoCredentials.password);
+                    setError("");
+                  }}
+                >
+                  Use Demo Login
+                </Button>
+              </div>
+
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-gray-300">

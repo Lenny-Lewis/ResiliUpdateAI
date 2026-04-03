@@ -16,35 +16,13 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Dummy credentials
 const DUMMY_USERS = [
   {
-    email: "admin@nexacorp.com",
-    password: "admin123",
-    name: "Sarah Mitchell",
+    email: "lennylewis6ay@gmail.com",
+    password: "lenashalewis",
+    name: "Demo User",
     role: "Admin",
-    corporation: "NexaCorp Industries",
-  },
-  {
-    email: "manager@nexacorp.com",
-    password: "manager123",
-    name: "James Anderson",
-    role: "Continuity Manager",
-    corporation: "NexaCorp Industries",
-  },
-  {
-    email: "officer@nexacorp.com",
-    password: "officer123",
-    name: "Emily Rodriguez",
-    role: "Resilience Officer",
-    corporation: "NexaCorp Industries",
-  },
-  {
-    email: "analyst@nexacorp.com",
-    password: "analyst123",
-    name: "Michael Chen",
-    role: "Analyst",
-    corporation: "NexaCorp Industries",
+    corporation: "Resili AI Demo",
   },
 ];
 
