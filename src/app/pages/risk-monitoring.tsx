@@ -74,9 +74,9 @@ const dataFeeds = [
 
 export function RiskMonitoring() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl">Risk Monitoring</h1>
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl sm:text-3xl">Risk Monitoring</h1>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400 flex items-center gap-1">
           <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
           Live Monitoring
@@ -122,8 +122,9 @@ export function RiskMonitoring() {
             Environmental Sensor Data (24h)
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
+        <CardContent className="overflow-x-auto">
+          <div className="min-w-[320px]">
+            <ResponsiveContainer width="100%" height={300}>
             <LineChart data={environmentalData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="time" stroke="#9CA3AF" />
@@ -137,7 +138,8 @@ export function RiskMonitoring() {
               <Line yAxisId="left" type="monotone" dataKey="windSpeed" stroke="#F59E0B" name="Wind Speed (km/h)" strokeWidth={2} />
               <Line yAxisId="right" type="monotone" dataKey="humidity" stroke="#8B5CF6" name="Humidity (%)" strokeWidth={2} />
             </LineChart>
-          </ResponsiveContainer>
+            </ResponsiveContainer>
+          </div>
         </CardContent>
       </Card>
 
@@ -149,8 +151,9 @@ export function RiskMonitoring() {
             Disaster Trends (6 Months)
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
+        <CardContent className="overflow-x-auto">
+          <div className="min-w-[320px]">
+            <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={disasterTrends}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="month" stroke="#9CA3AF" />
@@ -164,7 +167,8 @@ export function RiskMonitoring() {
               <Area type="monotone" dataKey="fires" stackId="1" stroke="#F59E0B" fill="#F59E0B" fillOpacity={0.6} name="Fires" />
               <Area type="monotone" dataKey="storms" stackId="1" stroke="#8B5CF6" fill="#8B5CF6" fillOpacity={0.6} name="Storms" />
             </AreaChart>
-          </ResponsiveContainer>
+            </ResponsiveContainer>
+          </div>
         </CardContent>
       </Card>
 
@@ -217,7 +221,7 @@ export function RiskMonitoring() {
                     </Badge>
                   </div>
                   <p className="text-gray-200 mb-2">{alert.message}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-500">
+                  <div className="flex flex-col gap-1 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
                     <span>{alert.location}</span>
                     <span>{alert.timestamp}</span>
                   </div>

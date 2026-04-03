@@ -233,10 +233,10 @@ export function CyberSecurity() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl">Cyber Security Logs</h1>
+          <h1 className="text-2xl sm:text-3xl">Cyber Security Logs</h1>
           <p className="text-gray-400 text-sm mt-1">Real-time security event monitoring and threat detection</p>
         </div>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400">
@@ -353,7 +353,7 @@ export function CyberSecurity() {
               </Select>
             </div>
           </div>
-          <div className="flex gap-2 mt-4">
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row">
             <Button
               variant="outline"
               className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
@@ -398,7 +398,7 @@ export function CyberSecurity() {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-[600px]">
-            <Table>
+            <Table className="min-w-[1100px]">
               <TableHeader>
                 <TableRow className="border-gray-700 hover:bg-gray-800/50">
                   <TableHead className="text-gray-400">Timestamp</TableHead>

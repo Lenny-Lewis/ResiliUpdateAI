@@ -41,9 +41,9 @@ const shapData = [
 
 export function Dashboard() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl">Dashboard Overview</h1>
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl sm:text-3xl">Dashboard Overview</h1>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400">
           Last updated: {new Date().toLocaleTimeString()}
         </Badge>
@@ -55,9 +55,9 @@ export function Dashboard() {
           <CardTitle className="text-gray-100">Overall Risk Score</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-6">
-            <div className={`${riskBg} rounded-lg p-8`}>
-              <div className={`text-6xl ${riskColor}`}>{riskScore}</div>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+            <div className={`${riskBg} rounded-lg p-6 sm:p-8`}>
+              <div className={`text-5xl sm:text-6xl ${riskColor}`}>{riskScore}</div>
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
@@ -198,8 +198,9 @@ export function Dashboard() {
           <CardHeader>
             <CardTitle className="text-gray-100">ROC Curve - Model Comparison</CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="overflow-x-auto">
+            <div className="min-w-[320px]">
+              <ResponsiveContainer width="100%" height={300}>
               <LineChart data={rocData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis dataKey="fpr" stroke="#9CA3AF" label={{ value: "False Positive Rate", position: "insideBottom", offset: -5 }} />
@@ -213,7 +214,8 @@ export function Dashboard() {
                 <Line key="line-rf" type="monotone" dataKey="tpr_rf" stroke="#F59E0B" name="Random Forest" strokeWidth={2} dot={{ r: 3 }} />
                 <Line key="line-xgb" type="monotone" dataKey="tpr_xgb" stroke="#8B5CF6" name="XGBoost" strokeWidth={2} dot={{ r: 3 }} />
               </LineChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
 
@@ -222,8 +224,9 @@ export function Dashboard() {
           <CardHeader>
             <CardTitle className="text-gray-100">SHAP Feature Importance</CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="overflow-x-auto">
+            <div className="min-w-[320px]">
+              <ResponsiveContainer width="100%" height={300}>
               <BarChart data={shapData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis type="number" stroke="#9CA3AF" />
@@ -234,7 +237,8 @@ export function Dashboard() {
                 />
                 <Bar dataKey="importance" fill="#22D3EE" />
               </BarChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
       </div>

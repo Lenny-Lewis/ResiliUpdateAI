@@ -180,10 +180,10 @@ export function DisasterPrediction() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl">Disaster Prediction & Image Analysis</h1>
+          <h1 className="text-2xl sm:text-3xl">Disaster Prediction & Image Analysis</h1>
           <p className="text-gray-400 text-sm mt-1">AI-powered disaster detection from satellite imagery</p>
         </div>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400">
@@ -223,9 +223,9 @@ export function DisasterPrediction() {
               </div>
             )}
           </div>
-          <div className="flex gap-3 mt-4">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <Button 
-              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white sm:w-auto"
               onClick={() => {}}
               disabled={!uploadedFile || isAnalyzing}
             >
@@ -243,7 +243,7 @@ export function DisasterPrediction() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
+              className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 sm:w-auto"
               disabled={!uploadedFile}
             >
               <Layers className="w-4 h-4 mr-2" />
@@ -269,17 +269,17 @@ export function DisasterPrediction() {
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Primary Finding */}
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
-              <div className="flex items-start gap-4">
+            <div className="bg-gray-900 rounded-lg border border-gray-800 p-4 sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <div className="p-3 bg-cyan-500/20 rounded-lg">
                   <Brain className="w-8 h-8 text-cyan-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl text-gray-100 mb-2">{analysisResult.primaryDisaster}</h3>
-                  <div className="flex items-center gap-4 text-sm mb-3">
-                    <div className="flex items-center gap-2">
+                  <h3 className="mb-2 text-lg text-gray-100 sm:text-xl">{analysisResult.primaryDisaster}</h3>
+                  <div className="mb-3 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                    <div className="flex items-center gap-2 min-w-0">
                       <MapPin className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-400">{analysisResult.location}</span>
+                      <span className="text-gray-400 break-words">{analysisResult.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Zap className="w-4 h-4 text-cyan-400" />
@@ -490,7 +490,7 @@ export function DisasterPrediction() {
           <CardTitle className="text-gray-100">ML Model Performance Comparison</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
+          <Table className="min-w-[640px]">
             <TableHeader>
               <TableRow className="border-gray-700 hover:bg-gray-800/50">
                 <TableHead className="text-gray-400">Model</TableHead>

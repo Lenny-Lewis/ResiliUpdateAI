@@ -212,10 +212,10 @@ export function Reports() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl">Reports & Analytics</h1>
-        <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl sm:text-3xl">Reports & Analytics</h1>
+        <Button className="bg-cyan-500 hover:bg-cyan-600 text-white sm:w-auto">
           <FileText className="w-4 h-4 mr-2" />
           Generate Custom Report
         </Button>
@@ -236,7 +236,7 @@ export function Reports() {
                 key={report.id}
                 className="bg-gray-800 rounded-lg p-4 border border-gray-700 hover:border-cyan-500/50 transition-colors"
               >
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <h4 className="text-gray-100">{report.title}</h4>
@@ -252,7 +252,7 @@ export function Reports() {
                       </Badge>
                     </div>
                     <p className="text-sm text-gray-400 mb-3">{report.description}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 sm:gap-4">
                       <span>{report.date}</span>
                       <span>•</span>
                       <span>{report.size}</span>
@@ -260,7 +260,7 @@ export function Reports() {
                       <span>Formats: {report.format.join(", ")}</span>
                     </div>
                   </div>
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex flex-col gap-2 sm:flex-row lg:ml-4">
                     {report.status === "ready" ? (
                       <>
                         {report.format.includes("PDF") && (
@@ -314,7 +314,9 @@ export function Reports() {
               feature contributes to model predictions, providing transparency in AI decision-making.
             </p>
           </div>
-          <ResponsiveContainer width="100%" height={350}>
+          <div className="overflow-x-auto">
+            <div className="min-w-[340px]">
+              <ResponsiveContainer width="100%" height={350}>
             <BarChart data={shapFeatureImportance} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis type="number" stroke="#9CA3AF" />
@@ -327,7 +329,9 @@ export function Reports() {
               <Bar key="bar-importance" dataKey="importance" fill="#22D3EE" name="Feature Importance" />
               <Bar key="bar-avgimpact" dataKey="avgImpact" fill="#8B5CF6" name="Average Impact" />
             </BarChart>
-          </ResponsiveContainer>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </CardContent>
       </Card>
 
@@ -340,8 +344,9 @@ export function Reports() {
               Model Performance Metrics
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="overflow-x-auto">
+            <div className="min-w-[320px]">
+              <ResponsiveContainer width="100%" height={300}>
               <BarChart data={modelPerformance}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis dataKey="metric" stroke="#9CA3AF" />
@@ -356,7 +361,8 @@ export function Reports() {
                 <Bar key="bar-xgboost" dataKey="XGBoost" fill="#8B5CF6" />
                 <Bar key="bar-svm" dataKey="SVM" fill="#EF4444" />
               </BarChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
 
@@ -368,8 +374,9 @@ export function Reports() {
               CNN vs Traditional ML
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="overflow-x-auto">
+            <div className="min-w-[320px]">
+              <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={radarData}>
                 <PolarGrid stroke="#374151" />
                 <PolarAngleAxis dataKey="metric" stroke="#9CA3AF" />
@@ -382,7 +389,8 @@ export function Reports() {
                 <Radar key="radar-cnn" name="CNN" dataKey="CNN" stroke="#22D3EE" fill="#22D3EE" fillOpacity={0.5} />
                 <Radar key="radar-ml" name="Traditional ML" dataKey="Traditional_ML" stroke="#F59E0B" fill="#F59E0B" fillOpacity={0.5} />
               </RadarChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
       </div>

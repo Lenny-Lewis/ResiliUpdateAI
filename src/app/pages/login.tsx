@@ -5,14 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { AlertCircle, ShieldCheck, LogIn } from "lucide-react";
-import { Badge } from "../components/ui/badge";
+import { AlertCircle, ShieldCheck, LogIn, Mail, KeyRound, CloudRain, AlertTriangle, ClipboardCheck, FileText } from "lucide-react";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showCredentials, setShowCredentials] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -28,168 +26,135 @@ export function Login() {
     }
   };
 
-  const demoAccounts = [
-    { email: "admin@nexacorp.com", password: "admin123", role: "Admin" },
-    { email: "manager@nexacorp.com", password: "manager123", role: "Continuity Manager" },
-    { email: "officer@nexacorp.com", password: "officer123", role: "Resilience Officer" },
-    { email: "analyst@nexacorp.com", password: "analyst123", role: "Analyst" },
-  ];
-
-  const quickLogin = (email: string, password: string) => {
-    setEmail(email);
-    setPassword(password);
-    const success = login(email, password);
-    if (success) {
-      navigate("/");
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Left Side - Branding */}
-        <div className="flex flex-col justify-center space-y-6 text-white">
-          <div>
-            <h1 className="text-5xl font-bold text-cyan-400 mb-2">Resili AI</h1>
-            <p className="text-xl text-gray-300">Enterprise Disaster Management Platform</p>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-lg font-semibold mb-1">AI-Powered Risk Assessment</h3>
-                <p className="text-gray-400 text-sm">
-                  Advanced CNN and ML models for real-time disaster prediction and risk analysis
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-lg font-semibold mb-1">Business Continuity Planning</h3>
-                <p className="text-gray-400 text-sm">
-                  Comprehensive tools for creating and managing recovery workflows and interventions
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-lg font-semibold mb-1">Real-Time Monitoring</h3>
-                <p className="text-gray-400 text-sm">
-                  Live sensor data feeds and automated alert systems for proactive response
-                </p>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 login-bg opacity-[0.55]" />
+        <div className="absolute inset-0 bg-gray-950/55" />
+        <div className="absolute -top-52 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(34,211,238,0.22),transparent)] blur-3xl" />
+        <div className="absolute -top-64 left-[-8rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(closest-side,rgba(139,92,246,0.18),transparent)] blur-3xl" />
+        <div className="absolute -bottom-72 right-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(closest-side,rgba(59,130,246,0.16),transparent)] blur-3xl" />
+      </div>
 
-          <div className="pt-4">
-            <p className="text-gray-500 text-sm">
-              Trusted by leading enterprises worldwide for mission-critical disaster resilience
-            </p>
+      <div className="relative w-full max-w-md">
+        <div className="mb-6 text-center">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
+            <div className="w-9 h-9 rounded-full bg-cyan-500/15 ring-1 ring-cyan-500/30 flex items-center justify-center">
+              <ShieldCheck className="w-4 h-4 text-cyan-200" />
+            </div>
+            <span className="text-sm font-medium tracking-wider text-cyan-200">Resili AI</span>
           </div>
+          <p className="mt-3 text-sm text-gray-400">Secure access to your resilience workspace</p>
         </div>
 
-        {/* Right Side - Login Form */}
-        <div className="space-y-4">
-          <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-gray-100 text-2xl">Sign In</CardTitle>
-              <p className="text-gray-400 text-sm">Enter your credentials to access the platform</p>
+        <div className="p-[1px] rounded-2xl bg-gradient-to-r from-cyan-400/70 via-indigo-400/35 to-cyan-400/70">
+          <Card className="bg-gray-950/70 border-white/10 backdrop-blur-xl rounded-2xl">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-gray-100 text-xl sm:text-2xl font-semibold tracking-tight flex items-center gap-2">
+                <LogIn className="w-5 h-5 text-cyan-300" />
+                Sign In
+              </CardTitle>
+              <p className="text-gray-400 text-sm">Enter your credentials to continue (you land on the dashboard)</p>
             </CardHeader>
+
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-300">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="user@nexacorp.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-500"
-                    required
-                  />
+                  <Label htmlFor="email" className="text-gray-300">
+                    Email
+                  </Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-300/80" />
+                    <Input
+                      id="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="user@nexacorp.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="bg-transparent border-white/10 text-gray-100 placeholder:text-gray-500 pl-10 focus-visible:border-cyan-400 focus-visible:ring-cyan-400/35"
+                      required
+                    />
+                  </div>
                 </div>
-                
+
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-gray-300">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-500"
-                    required
-                  />
+                  <Label htmlFor="password" className="text-gray-300">
+                    Password
+                  </Label>
+                  <div className="relative">
+                    <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-300/80" />
+                    <Input
+                      id="password"
+                      type="password"
+                      autoComplete="current-password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="bg-transparent border-white/10 text-gray-100 placeholder:text-gray-500 pl-10 focus-visible:border-cyan-400 focus-visible:ring-cyan-400/35"
+                      required
+                    />
+                  </div>
                 </div>
 
                 {error && (
-                  <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-                    <AlertCircle className="w-4 h-4 text-red-400" />
-                    <span className="text-sm text-red-400">{error}</span>
+                  <div
+                    role="alert"
+                    className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg"
+                  >
+                    <AlertCircle className="w-4 h-4 text-red-300" />
+                    <span className="text-sm text-red-300">{error}</span>
                   </div>
                 )}
 
                 <Button
                   type="submit"
-                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+                  className="w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-indigo-400 hover:from-cyan-300 hover:to-indigo-300 text-gray-950 font-semibold shadow-[0_0_0_1px_rgba(34,211,238,0.28),0_20px_70px_rgba(34,211,238,0.16)] transition-transform duration-150 hover:scale-[1.01]"
                 >
                   <LogIn className="w-4 h-4 mr-2" />
                   Sign In
                 </Button>
               </form>
-            </CardContent>
-          </Card>
 
-          {/* Demo Credentials Card */}
-          <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-gray-100 text-lg">Demo Accounts</CardTitle>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowCredentials(!showCredentials)}
-                  className="text-cyan-400 hover:text-cyan-300"
-                >
-                  {showCredentials ? "Hide" : "Show"}
-                </Button>
-              </div>
-              <p className="text-gray-400 text-sm">Quick access for testing</p>
-            </CardHeader>
-            {showCredentials && (
-              <CardContent className="space-y-2">
-                {demoAccounts.map((account, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between p-3 bg-gray-800 rounded-lg border border-gray-700 hover:border-cyan-500/50 transition-colors"
-                  >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm text-gray-300 font-mono">{account.email}</span>
-                        <Badge variant="outline" className="text-xs text-cyan-400 border-cyan-400">
-                          {account.role}
-                        </Badge>
+              <div className="pt-4">
+                <div className="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">What you can do</p>
+                  <div className="mt-2 space-y-2">
+                    <div className="flex items-start gap-2">
+                      <CloudRain className="w-4 h-4 mt-0.5 text-cyan-200/80" />
+                      <div>
+                        <p className="text-sm text-gray-200">Disaster Prediction</p>
+                        <p className="text-xs text-gray-500">Review forecasted risk trends and alerts.</p>
                       </div>
-                      <span className="text-xs text-gray-500 font-mono">Password: {account.password}</span>
                     </div>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => quickLogin(account.email, account.password)}
-                      className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
-                    >
-                      Quick Login
-                    </Button>
+
+                    <div className="flex items-start gap-2">
+                      <AlertTriangle className="w-4 h-4 mt-0.5 text-cyan-200/80" />
+                      <div>
+                        <p className="text-sm text-gray-200">Risk Monitoring</p>
+                        <p className="text-xs text-gray-500">Track live signals and escalation status.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2">
+                      <ClipboardCheck className="w-4 h-4 mt-0.5 text-cyan-200/80" />
+                      <div>
+                        <p className="text-sm text-gray-200">Continuity Planning</p>
+                        <p className="text-xs text-gray-500">Create and manage recovery workflows.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2">
+                      <FileText className="w-4 h-4 mt-0.5 text-cyan-200/80" />
+                      <div>
+                        <p className="text-sm text-gray-200">Reports & Analytics</p>
+                        <p className="text-xs text-gray-500">Export summaries and model insights.</p>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </CardContent>
-            )}
+                </div>
+              </div>
+            </CardContent>
           </Card>
         </div>
       </div>

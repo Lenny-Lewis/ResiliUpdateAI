@@ -118,9 +118,9 @@ export function ContinuityPlanning() {
   const progressPercentage = Math.round((completedSteps / totalSteps) * 100);
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl">Continuity Planning</h1>
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl sm:text-3xl">Continuity Planning</h1>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400">
           Recovery in Progress
         </Badge>
@@ -178,7 +178,7 @@ export function ContinuityPlanning() {
                   intervention.priority === "high" ? "border-red-500/30" : "border-gray-700"
                 }`}
               >
-                <div className="flex items-start justify-between mb-3">
+                <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <h4 className="text-gray-100">{intervention.title}</h4>
@@ -194,7 +194,7 @@ export function ContinuityPlanning() {
                       </Badge>
                     </div>
                     <p className="text-sm text-gray-400 mb-2">{intervention.description}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex flex-col gap-2 text-xs text-gray-500 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                       <span className="flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         Impact: {intervention.impact}
@@ -225,7 +225,7 @@ export function ContinuityPlanning() {
                   </Badge>
                 </div>
                 {intervention.status === "pending" && (
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2 sm:flex-row">
                     <Button size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white">
                       Initiate
                     </Button>
@@ -268,7 +268,7 @@ export function ContinuityPlanning() {
                 </div>
                 <div className="ml-4 pl-4 border-l-2 border-gray-700 space-y-3">
                   {phase.steps.map((step, stepIndex) => (
-                    <div key={stepIndex} className="flex items-center justify-between py-2">
+                    <div key={stepIndex} className="flex flex-col gap-2 py-2 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-center gap-3">
                         {step.status === "completed" ? (
                           <CheckCircle className="w-5 h-5 text-green-400" />
@@ -289,7 +289,7 @@ export function ContinuityPlanning() {
                           {step.name}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 pl-8 sm:pl-0">
                         <User className="w-4 h-4 text-gray-500" />
                         <span className="text-sm text-gray-500">{step.assignee}</span>
                       </div>

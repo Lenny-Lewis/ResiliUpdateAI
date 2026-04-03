@@ -262,9 +262,9 @@ export function AdminSettings() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl">Admin Settings</h1>
+    <div className="space-y-6 overflow-x-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl sm:text-3xl">Admin Settings</h1>
         <Badge variant="outline" className="text-cyan-400 border-cyan-400">
           Administrator Panel
         </Badge>
@@ -273,13 +273,13 @@ export function AdminSettings() {
       {/* User Management */}
       <Card className="bg-gray-900 border-gray-800">
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <CardTitle className="text-gray-100 flex items-center gap-2">
               <Users className="w-5 h-5 text-cyan-400" />
               User Management
             </CardTitle>
             <Button 
-              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white sm:w-auto"
               onClick={() => setIsAddUserOpen(true)}
             >
               <UserPlus className="w-4 h-4 mr-2" />
@@ -288,7 +288,7 @@ export function AdminSettings() {
           </div>
         </CardHeader>
         <CardContent>
-          <Table>
+          <Table className="min-w-[760px]">
             <TableHeader>
               <TableRow className="border-gray-700 hover:bg-gray-800/50">
                 <TableHead className="text-gray-400">User</TableHead>
@@ -415,21 +415,21 @@ export function AdminSettings() {
         <CardContent>
           <div className="space-y-6">
             <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h4 className="text-gray-100 mb-1">Two-Factor Authentication</h4>
                   <p className="text-sm text-gray-400">Require 2FA for all user accounts</p>
                 </div>
                 <Switch defaultChecked />
               </div>
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h4 className="text-gray-100 mb-1">Session Timeout</h4>
                   <p className="text-sm text-gray-400">Auto-logout after inactivity</p>
                 </div>
                 <Switch defaultChecked />
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h4 className="text-gray-100 mb-1">IP Whitelisting</h4>
                   <p className="text-sm text-gray-400">Restrict access to approved IP addresses</p>
@@ -538,7 +538,7 @@ export function AdminSettings() {
               ))}
             </div>
           </ScrollArea>
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <Button variant="outline" className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10">
               <Download className="w-4 h-4 mr-2" />
               Export Logs
@@ -551,11 +551,11 @@ export function AdminSettings() {
       </Card>
 
       {/* Logout Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-stretch sm:justify-end">
         <Button
           size="sm"
           variant="outline"
-          className="border-red-500 text-red-500 hover:bg-red-500/10"
+          className="w-full border-red-500 text-red-500 hover:bg-red-500/10 sm:w-auto"
           onClick={handleLogout}
         >
           <LogOut className="w-4 h-4 mr-2" />
